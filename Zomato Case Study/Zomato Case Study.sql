@@ -85,6 +85,29 @@ SELECT month, revenue, LAG(revenue, 1) OVER(ORDER BY revenue) AS 'previous' FROM
 
 8. Customer -> favourite food
 
+WITH temp AS
+(
+      SELECT o.user_id, od.f_id, COUNT(*) AS frequency
+      FROM orders o 
+      JOIN order_details od 
+      ON o.order_id = od.order_id
+      GROUP BY o.user_id, od.f_id
+
+)
+
+SELECT u.user_id, u.name, f.f_name, t1.frequency FROM temp t1
+JOIN users u 
+ON u.user_id = t1.user_id
+JOIN food f 
+ON f.f_id = t1.f_id
+WHERE t1.frequency = 
+(
+      SELECT MAX(frequency) 
+      FROM temp t2 
+      WHERE t2.user_id = t1.user_id
+)
+
+
 Extra Questions
 
 1. Find most loyal customers for all restaurants.
