@@ -1,6 +1,14 @@
 # Zomato-SQL-Case-Study
 Zomato SQL Case Study
 
+### Case Study: Improving Operational Efficiency at Zomato Using SQL
+
+#### Introduction:
+Zomato is a leading online food delivery and restaurant aggregator platform, serving millions of customers worldwide. As the company expands, it faces challenges in managing the massive amount of data generated from orders, deliveries, and customer interactions. To optimize its operations and enhance customer experience, Zomato aims to leverage SQL (Structured Query Language) to analyze and manipulate data efficiently.
+
+#### Objective:
+The primary objective of this case study is to explore how SQL can be utilized to improve operational efficiency at Zomato. We will focus on specific business scenarios and provide SQL queries to address the questions raised.
+
 ![png-transparent-zomato-hd-logo](https://github.com/therealyash/Zomato-SQL-Case-Study/assets/114616305/f6021ba4-7b3a-4f16-bcbf-bc63d9eb6535)
 
 ### 1. Find customers who have never ordered. 
@@ -112,3 +120,5 @@ WHERE t1.frequency =
       WHERE t2.user_id = t1.user_id
 )
 ```
+#### Conclusion:
+Through this case study, we aim to demonstrate the power of SQL in helping Zomato make data-driven decisions, optimize operations, and enhance customer satisfaction. By leveraging SQL to answer the provided questions, Zomato can gain valuable insights into their business and implement strategies to further improve their services, drive growth, and stay competitive in the dynamic food delivery industry.
