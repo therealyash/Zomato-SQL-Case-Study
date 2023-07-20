@@ -52,7 +52,37 @@ WHERE user_id = (SELECT user_id FROM users
 AND date > '2022-06-10' AND date < '2022-07-10'
 
 6. Find restaurants with max repeated customers
+
+SELECT t.r_id, r.r_name, COUNT(*) AS 'loyal customers'
+FROM 
+      (
+            SELECT r_id, user_id, COUNT(*) AS 'visits'
+            FROM orders
+            GROUP BY r_id, user_id
+            HAVING visits > 1
+      ) t
+JOIN restaurants r 
+ON r.r_id = t.r_id
+GROUP BY 1,2
+ORDER BY 2 DESC LIMIT 1
+
 7. Month over month revenue of Zomato
+
+SELECT month, ((revenue - previous)/previous)*100 AS 'growth'
+FROM 
+(
+
+      WITH sales AS 
+(
+      SELECT MONTHNAME(date) AS 'month', SUM(amount) AS revenue
+      FROM orders
+      GROUP BY 1
+      ORDER BY MONTH(date)
+)
+SELECT month, revenue, LAG(revenue, 1) OVER(ORDER BY revenue) AS 'previous' FROM sales
+) t
+
+
 8. Customer -> favourite food
 
 Extra Questions
