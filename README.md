@@ -1,6 +1,8 @@
 # Zomato-SQL-Case-Study
 Zomato SQL Case Study
 
+![png-transparent-zomato-hd-logo](https://github.com/therealyash/Zomato-SQL-Case-Study/assets/114616305/f6021ba4-7b3a-4f16-bcbf-bc63d9eb6535)
+
 ### 1. Find customers who have never ordered. 
 ```
 SELECT name 
