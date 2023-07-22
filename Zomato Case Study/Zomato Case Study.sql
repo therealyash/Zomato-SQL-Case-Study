@@ -107,6 +107,19 @@ WHERE t1.frequency =
       WHERE t2.user_id = t1.user_id
 )
 
+9. Find top 2 most paying customers of each month
+
+SELECT month, t.user_id, u.name, total
+FROM
+      (SELECT MONTHNAME(date) AS month, user_id, SUM(amount) AS total,
+      RANK() OVER(PARTITION BY month ORDER BY SUM(amount) DESC) AS month_rank
+      FROM orders
+      GROUP BY 1,2
+      ORDER BY MONTH(date))t
+JOIN users u 
+ON t.user_id = u.user_id
+WHERE t.month_rank < 3 
+ORDER BY 1 DESC
 
 Extra Questions
 
